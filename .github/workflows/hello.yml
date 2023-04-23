@@ -5,7 +5,7 @@ on:
       - yahoo
       - main
 jobs:
-  azure-openid-login:
+  login-azure-send-slack-message:
     runs-on: ubuntu-latest
     steps:
       - name: 'Az CLI login'
