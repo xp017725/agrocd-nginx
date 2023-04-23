@@ -1,0 +1,11 @@
+name: Name of the workflow
+on:
+  pull:
+    branches:
+      - main
+jobs:
+  myjobname: null
+  runs-on: ubuntu-latest
+  steps:
+    - name: echo something
+      run: echo "hello word!!
