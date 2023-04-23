@@ -8,4 +8,4 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - name: echo something
-    run: echo "hello word!!
+    run: echo "hello word!!"
