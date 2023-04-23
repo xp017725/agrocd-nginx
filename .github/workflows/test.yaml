@@ -1,0 +1,35 @@
+name: Slack Notifications
+
+on:
+  #pull_request:
+  #  branches:
+  #    - main
+  push:
+    branches:
+      - test-new-branch
+jobs:
+ azure-openid-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}	
+      - name: Retrieve Slack Token from Azure Key Vault
+        uses: azure/keyvault-secrets@1.1.0
+        with:
+          secrets: ['SLACK_BOT_TOKEN', 'SLACK_PR_CHANNEL_ID']
+          vault-uri: 'https://ab-dev-reguard.vault.azure.net/'
+  
+  send-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        uses: abinoda/slack-action@master
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          args: '{\"channel\":\"${{ secrets.SLACK_PR_CHANNEL_ID }}\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Repository pushed to:* ${{ github.event.repository.name }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Pusher:* ${{ github.event.pusher.name }}\n*Commit Message:* ${{ github.event.head_commit.message }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"<${{ github.event.repository.html_url }}|View Repository>\"}}]}'
+        if: success()
