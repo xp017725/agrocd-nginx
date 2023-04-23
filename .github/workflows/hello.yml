@@ -4,9 +4,8 @@ on:
     branches:
       - main
 jobs:
-  myjobname: 
-  name: Test Job
-   runs-on: ubuntu-latest
-   steps:
-   - name: echo something
-     run: echo "hello word!!
+ myjobname: 
+  runs-on: ubuntu-latest
+  steps:
+  - name: echo something
+    run: echo "hello word!!
