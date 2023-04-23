@@ -6,7 +6,7 @@ on:
 jobs:
   myjobname: 
   name: Test Job
-  runs-on: ubuntu-latest
-  steps:
-  - name: echo something
-    run: echo "hello word!!
+   runs-on: ubuntu-latest
+   steps:
+   - name: echo something
+     run: echo "hello word!!
