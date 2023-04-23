@@ -17,7 +17,9 @@ jobs:
       - name: Retrieve Slack Token from Azure Key Vault
         uses: azure/keyvault-secrets@1.1.0
         with:
-          secrets: ['SLACK_BOT_TOKEN', 'SLACK_PR_CHANNEL_ID']
+          secrets: 
+            - SLACK_BOT_TOKEN
+            - SLACK_PR_CHANNEL_ID
           vault-uri: 'https://ab-dev-reguard.vault.azure.net/'
   
   send-notification:
