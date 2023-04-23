@@ -1,8 +1,9 @@
-name: Name of the workflow
+name: Slack Notifier
 on:
   push:
     branches:
       - yahoo
+      - main
 jobs:
   azure-openid-login:
     runs-on: ubuntu-latest
