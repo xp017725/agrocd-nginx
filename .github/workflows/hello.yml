@@ -1,6 +1,6 @@
 name: Name of the workflow
 on:
-  pull:
+  push:
     branches:
       - main
 jobs:
