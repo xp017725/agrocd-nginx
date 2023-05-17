@@ -1,8 +1,8 @@
 name: Name of the workflow
-on:
-  push:
-    branches:
-      - yahoo
+on: workflow_dispatch
+#   push:
+#     branches:
+#       - yahoo
 jobs:
  myjobname: 
   runs-on: ubuntu-latest
