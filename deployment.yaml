@@ -15,6 +15,13 @@ spec:
     spec:
       containers:
       - name: nginx
+        resources:
+          requests:
+            cpu: 256m
+            memory: 256Mi
+          limits:
+            cpu: 512m
+            memory: 512Mi
         image: vivek7987/nginx:latest
         imagePullPolicy: Always
         ports:
